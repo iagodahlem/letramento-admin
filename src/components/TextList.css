@@ -1,0 +1,30 @@
+.TextList {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: -1em;
+  margin-left: -1em;
+}
+
+.TextItem {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 1em);
+  margin-top: 1em;
+  margin-left: 1em;
+  padding: 1em;
+  border-radius: 8px;
+  background-color: var(--primary);
+}
+
+.TextItem__title,
+.TextItem__description {
+  color: var(--white);
+}
+
+.TextItem__title {
+
+}
+
+.TextItem__description {
+
+}
