@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { createLogger } from 'redux-logger'
-import rootReducer from './reducers'
-import * as authService from './services/authService'
+import rootReducer from '../reducers'
+import * as authService from '../services/authService'
 
 const initialState = {
   texts: {
