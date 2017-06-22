@@ -17,6 +17,7 @@
   color: var(--900);
   font-size: 1.2em;
   text-decoration: none;
+  transition: opacity .1s ease;
 }
 
 .Header__nav ul {
@@ -29,9 +30,11 @@
   color: var(--900);
   font-weight: 700;
   text-decoration: none;
-  transition: color .1s ease;
+  transition: opacity .1s ease;
 }
 
+.Header__title a:hover,
+.Header__navLink:hover,
 .Header__navLink.is-active {
-  color: var(--600);
+  opacity: .5;
 }

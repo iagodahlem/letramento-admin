@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { getTextsIsFetching, getTextsErrorMessage } from '../reducers'
 import * as textsActions from '../actions/textsActions'
 import Page from '../components/Page'
+import TextForm from '../components/TextForm'
 
 class Texts extends Component {
   state = {
@@ -33,12 +34,10 @@ class Texts extends Component {
 
     return (
       <Page>
-        <input type='text' name='title' placeholder='Titulo' onChange={this.handleChangeText} />
-        <input type='text' name='description' placeholder='Descrição' onChange={this.handleChangeText} />
-        <textarea name='body' placeholder='Texto' onChange={this.handleChangeText} />
-        <button onClick={this.handleClickCreateText}>
-          Salvar
-        </button>
+        <TextForm
+          onChangeText={this.handleChangeText}
+          onClickCreateText={this.handleClickCreateText}
+        />
       </Page>
     )
   }

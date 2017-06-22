@@ -1,22 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './Input.css'
+import './Textarea.css'
 
-const Input = ({ type = 'text', name, onChange, placeholder }) => (
-  <input
-    className='Input'
-    type={type}
+const Textarea = ({ name, rows, onChange, placeholder }) => (
+  <textarea
+    className='Textarea Input'
     name={name}
+    rows={rows}
     onChange={onChange}
     placeholder={placeholder}
   />
 )
 
-Input.propTypes = {
+Textarea.propTypes = {
   type: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
 }
 
-export default Input
+export default Textarea
