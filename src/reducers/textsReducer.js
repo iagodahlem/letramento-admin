@@ -16,10 +16,8 @@ const all = (state = [], action) => {
 const text = (state = {}, action) => {
   switch (action.type) {
     case types.TEXTS_SHOW_SUCCESS:
+    case types.TEXTS_UPDATE_SUCCESS:
       return action.payload
-    case types.TEXTS_SHOW_REQUEST:
-    case types.TEXTS_SHOW_FAILURE:
-      return {}
     default:
       return state
   }
@@ -30,6 +28,7 @@ const isFetching = (state = false, action) => {
     case types.TEXTS_FETCH_REQUEST:
     case types.TEXTS_SHOW_REQUEST:
     case types.TEXTS_CREATE_REQUEST:
+    case types.TEXTS_UPDATE_REQUEST:
       return true
     case types.TEXTS_FETCH_SUCCESS:
     case types.TEXTS_FETCH_FAILURE:
@@ -37,6 +36,8 @@ const isFetching = (state = false, action) => {
     case types.TEXTS_SHOW_FAILURE:
     case types.TEXTS_CREATE_SUCCESS:
     case types.TEXTS_CREATE_FAILURE:
+    case types.TEXTS_UPDATE_SUCCESS:
+    case types.TEXTS_UPDATE_FAILURE:
       return false
     default:
       return state
@@ -48,6 +49,7 @@ const errorMessage = (state = null, action) => {
     case types.TEXTS_FETCH_FAILURE:
     case types.TEXTS_SHOW_FAILURE:
     case types.TEXTS_CREATE_FAILURE:
+    case types.TEXTS_UPDATE_FAILURE:
       return action.message
     case types.TEXTS_FETCH_REQUEST:
     case types.TEXTS_FETCH_SUCCESS:
@@ -55,6 +57,8 @@ const errorMessage = (state = null, action) => {
     case types.TEXTS_SHOW_SUCCESS:
     case types.TEXTS_CREATE_REQUEST:
     case types.TEXTS_CREATE_SUCCESS:
+    case types.TEXTS_UPDATE_REQUEST:
+    case types.TEXTS_UPDATE_SUCCESS:
       return null
     default:
       return state

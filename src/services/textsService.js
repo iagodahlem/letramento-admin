@@ -13,14 +13,20 @@ const createText = (text) => apiService
   .post('/texts', text, { headers: authService.authorization() })
   .then(response => response.data)
 
+const updateText = (id, text) => apiService
+  .put(`/texts/${id}`, text, { headers: authService.authorization() })
+  .then(response => response.data)
+
 export default {
   fetchTexts,
   showText,
   createText,
+  updateText,
 }
 
 export {
   fetchTexts,
   showText,
   createText,
+  updateText,
 }

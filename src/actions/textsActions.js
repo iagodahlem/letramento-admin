@@ -59,8 +59,9 @@ const createText = (text) => (dispatch, getState) => {
     type: types.TEXTS_CREATE_REQUEST,
   })
 
-  const createSuccess = () => ({
+  const createSuccess = (payload) => ({
     type: types.TEXTS_CREATE_SUCCESS,
+    payload,
   })
 
   const createFailure = (error) => ({
@@ -75,12 +76,39 @@ const createText = (text) => (dispatch, getState) => {
   dispatch(createRequest())
 
   return textsService.createText(text)
-    .then(() => dispatch(createSuccess()))
+    .then(payload => dispatch(createSuccess(payload)))
     .catch(error => dispatch(createFailure(error)))
+}
+
+const updateText = (id, text) => (dispatch, getState) => {
+  const updateRequest = () => ({
+    type: types.TEXTS_UPDATE_REQUEST,
+  })
+
+  const updateSuccess = (payload) => ({
+    type: types.TEXTS_UPDATE_SUCCESS,
+    payload,
+  })
+
+  const updateFailure = (error) => ({
+    type: types.TEXTS_UPDATE_FAILURE,
+    message: error.message || 'Alguma coisa deu errado.',
+  })
+
+  if (getTextsIsFetching(getState())) {
+    return Promise.resolve()
+  }
+
+  dispatch(updateRequest())
+
+  return textsService.updateText(id, text)
+    .then(payload => dispatch(updateSuccess(payload)))
+    .catch(error => dispatch(updateFailure(error)))
 }
 
 export {
   fetchTexts,
   showText,
   createText,
+  updateText,
 }

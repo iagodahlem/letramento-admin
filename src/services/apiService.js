@@ -8,12 +8,17 @@ const get = (url, config) => axios
 const post = (url, data, config) => axios
   .post(`${BASE_URL}${url}`, data, config)
 
+const put = (url, data, config) => axios
+  .put(`${BASE_URL}${url}`, data, config)
+
 export default {
   get,
   post,
+  put,
 }
 
 export {
   get,
   post,
+  put,
 }
