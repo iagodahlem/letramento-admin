@@ -1,23 +1,28 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import './Header.css'
 
-const Admin = () => (
-  <header className='Admin__header'>
-    <h1>
-      <Link to='/'>FL Admin</Link>
+const Header = () => (
+  <header className='Header'>
+    <h1 className='Header__title'>
+      <Link to='/'>Letramento</Link>
     </h1>
 
-    <nav>
+    <nav className='Header__nav'>
       <ul>
         <li>
-          <NavLink to='/'>Textos</NavLink>
+          <NavLink exact className='Header__navLink' activeClassName='is-active' to='/'>
+            Textos
+          </NavLink>
         </li>
         <li>
-          <NavLink to='/'>Novo Texto</NavLink>
+          <NavLink exact className='Header__navLink' activeClassName='is-active' to='/textos/novo'>
+            Novo Texto
+          </NavLink>
         </li>
       </ul>
     </nav>
   </header>
 )
 
-export default Admin
+export default Header

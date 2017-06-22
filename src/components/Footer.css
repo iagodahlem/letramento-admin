@@ -1,0 +1,5 @@
+.Footer {
+  margin-top: 2.5em;
+  padding: var(--gutter);
+  border-top: 1px solid var(--100);
+}

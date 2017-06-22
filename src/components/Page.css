@@ -1,17 +1,13 @@
 .Page {
   width: 100%;
-}
-
-.Page__header {
-  height: 58px;
-  border-bottom: 1px solid #ccc;
+  background-color: #fff;
 }
 
 .Page__section {
   max-width: 966px;
   margin-right: auto;
   margin-left: auto;
+  padding-top: 1em;
   padding-right: 1em;
   padding-left: 1em;
-  background-color: #fff;
 }

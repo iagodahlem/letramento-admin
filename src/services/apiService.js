@@ -2,8 +2,18 @@ import axios from 'axios'
 
 const BASE_URL = 'http://localhost:3001/api'
 
-export const get = (url) => axios
-  .get(`${BASE_URL}${url}`)
+const get = (url, config) => axios
+  .get(`${BASE_URL}${url}`, config)
 
-export const post = (url, data) => axios
-  .post(`${BASE_URL}${url}`, data)
+const post = (url, data, config) => axios
+  .post(`${BASE_URL}${url}`, data, config)
+
+export default {
+  get,
+  post,
+}
+
+export {
+  get,
+  post,
+}

@@ -3,15 +3,11 @@ import { connect } from 'react-redux'
 import * as authActions from '../actions/authActions'
 
 class Login extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      credentials: {},
-    }
+  state = {
+    credentials: {},
   }
 
-  handleChangeLoginForm(e) {
+  handleChangeCredentials = (e) => {
     const credentials = this.state.credentials
     const name = e.target.name
     const value = e.target.value
@@ -23,7 +19,7 @@ class Login extends Component {
     })
   }
 
-  handleClickLoginForm(e) {
+  handleClickLogin = (e) => {
     const credentials = this.state.credentials
     const login = this.props.login
 
@@ -33,10 +29,10 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <input type="email" name="email" onChange={(e) => this.handleChangeLoginForm(e)}/>
-        <input type="password" name="password" onChange={(e) => this.handleChangeLoginForm(e)}/>
+        <input type="email" name="email" onChange={this.handleChangeCredentials}/>
+        <input type="password" name="password" onChange={this.handleChangeCredentials}/>
 
-        <button type="button" onClick={(e)=> this.handleClickLoginForm(e)}>
+        <button type="button" onClick={this.handleClickLoginForm}>
           Entrar
         </button>
       </div>

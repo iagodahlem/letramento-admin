@@ -5,6 +5,9 @@ const all = (state = [], action) => {
   switch (action.type) {
     case types.TEXTS_FETCH_SUCCESS:
       return action.payload
+    case types.TEXTS_FETCH_REQUEST:
+    case types.TEXTS_FETCH_FAILURE:
+      return []
     default:
       return state
   }
@@ -13,9 +16,12 @@ const all = (state = [], action) => {
 const isFetching = (state = false, action) => {
   switch (action.type) {
     case types.TEXTS_FETCH_REQUEST:
+    case types.TEXTS_CREATE_REQUEST:
       return true
     case types.TEXTS_FETCH_SUCCESS:
     case types.TEXTS_FETCH_FAILURE:
+    case types.TEXTS_CREATE_SUCCESS:
+    case types.TEXTS_CREATE_FAILURE:
       return false
     default:
       return state
@@ -25,9 +31,12 @@ const isFetching = (state = false, action) => {
 const errorMessage = (state = null, action) => {
   switch (action.type) {
     case types.TEXTS_FETCH_FAILURE:
+    case types.TEXTS_CREATE_FAILURE:
       return action.message
     case types.TEXTS_FETCH_REQUEST:
     case types.TEXTS_FETCH_SUCCESS:
+    case types.TEXTS_CREATE_REQUEST:
+    case types.TEXTS_CREATE_SUCCESS:
       return null
     default:
       return state

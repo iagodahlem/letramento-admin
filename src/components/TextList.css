@@ -8,12 +8,21 @@
 .TextItem {
   display: flex;
   flex-direction: column;
-  width: calc(100% - 1em);
+  width: calc(33.3% - 1em);
   margin-top: 1em;
   margin-left: 1em;
-  padding: 1em;
-  border-radius: 8px;
+  border-radius: .5em;
   background-color: var(--primary);
+  overflow: hidden;
+}
+
+.TextItem__body,
+.TextItem__footer {
+  padding: 1em;
+}
+
+.TextItem__footer {
+  background-color: rgba(0,0,0,.2);
 }
 
 .TextItem__title,
@@ -22,9 +31,5 @@
 }
 
 .TextItem__title {
-
-}
-
-.TextItem__description {
-
+  font-size: 1.25em;
 }

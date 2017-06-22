@@ -15,14 +15,22 @@ const setToken = (token) => {
   return token
 }
 
-const setHeaders = () => ({
+const authorization = () => ({
   'Authorization': `Bearer ${getToken()}`
 })
+
+export default {
+  login,
+  getToken,
+  hasToken,
+  setToken,
+  authorization,
+}
 
 export {
   login,
   getToken,
   hasToken,
   setToken,
-  setHeaders,
+  authorization,
 }

@@ -7,7 +7,8 @@ import registerServiceWorker from './registerServiceWorker'
 import App from './components/App'
 import Home from './containers/Home'
 import Login from './containers/Login'
-import Texts from './containers/Texts'
+import TextsNew from './containers/TextsNew'
+import TextsShow from './containers/TextsShow'
 import { hasToken } from './services/authService'
 import './index.css'
 
@@ -32,9 +33,10 @@ const routes = (
       <App>
         <Switch>
           <Route exact path='/login' component={Login} />
+
           <RoutePrivate exact path='/' component={Home} />
-          <RoutePrivate exact path='/textos' component={Texts} />
-          <RoutePrivate exact path='/textos/:id' component={Text} />
+          <RoutePrivate exact path='/textos/novo' component={TextsNew} />
+          <RoutePrivate exact path='/textos/:id' component={TextsShow} />
         </Switch>
       </App>
     </Router>
