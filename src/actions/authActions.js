@@ -27,3 +27,11 @@ export const login = (credentials) => (dispatch, getState) => {
     .then(token => dispatch(loginSuccess(token)))
     .catch(error => dispatch(loginFailure(error)))
 }
+
+export const logout = () => {
+  authService.removeToken()
+
+  return {
+    type: types.LOG_OUT,
+  }
+}

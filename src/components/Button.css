@@ -13,9 +13,19 @@
   font-size: 1.3em;
   font-weight: 700;
   cursor: pointer;
-  transition: opacity .1s ease;
+  transition: all .1s ease;
 }
 
 .Button:hover {
   opacity: .8;
+}
+
+.Button:disabled {
+  background-color: var(--300);
+  border-color: var(--300);
+  cursor: not-allowed;
+}
+
+.Button:disabled:hover {
+  opacity: 1;
 }

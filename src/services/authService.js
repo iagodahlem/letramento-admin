@@ -15,6 +15,8 @@ const setToken = (token) => {
   return token
 }
 
+const removeToken = () => sessionStorage.removeItem(TOKEN)
+
 const authorization = () => ({
   'Authorization': `Bearer ${getToken()}`
 })
@@ -24,6 +26,7 @@ export default {
   getToken,
   hasToken,
   setToken,
+  removeToken,
   authorization,
 }
 
@@ -32,5 +35,6 @@ export {
   getToken,
   hasToken,
   setToken,
+  removeToken,
   authorization,
 }

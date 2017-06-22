@@ -5,6 +5,7 @@ import * as types from '../constants/actionTypes'
 const token = (state = false, action) => {
   switch (action.type) {
     case types.LOG_IN_SUCCESS:
+    case types.LOG_OUT:
       return hasToken()
     case types.LOG_IN_REQUEST:
     case types.LOG_IN_FAILURE:

@@ -1,3 +1,20 @@
 .LoginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 24em;
+  min-height: calc(100vh - 124px);
+  margin: 0 auto;
+}
 
+.LoginForm__title {
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+.LoginForm__footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
 }

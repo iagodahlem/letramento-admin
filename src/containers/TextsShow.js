@@ -9,7 +9,11 @@ import TextForm from '../components/TextForm'
 
 class TextsShow extends Component {
   state = {
-    text: {},
+    text: {
+      title: '',
+      description: '',
+      body: '',
+    },
   }
 
   componentDidMount = () => {
@@ -48,11 +52,12 @@ class TextsShow extends Component {
     const { text } = this.state
 
     return (
-      <Page>
+      <Page title='Texto'>
         <TextForm
           text={text}
           onChange={this.handleChangeText}
           onClick={this.handleClickUpdate}
+          isFetching={isFetching}
         />
       </Page>
     )

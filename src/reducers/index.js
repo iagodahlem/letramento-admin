@@ -16,3 +16,4 @@ export const getTextsErrorMessage = (state) => fromTexts.getErrorMessage(state.t
 
 export const getAuthToken = (state) => fromAuth.getToken(state.auth)
 export const getAuthIsFetching = (state) => fromAuth.getIsFetching(state.auth)
+export const getAuthErrorMessage = (state) => fromTexts.getErrorMessage(state.auth)

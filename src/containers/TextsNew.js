@@ -31,12 +31,14 @@ class Texts extends Component {
 
   render() {
     const { isFetching, errorMessage } = this.props
+    const { text } = this.state
 
     return (
-      <Page>
+      <Page title='Novo Texto'>
         <TextForm
           onChange={this.handleChangeText}
           onClick={this.handleClickCreate}
+          isFetching={isFetching}
         />
       </Page>
     )

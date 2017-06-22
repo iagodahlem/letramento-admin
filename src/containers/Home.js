@@ -19,8 +19,8 @@ class Home extends Component {
     const { texts, isFetching } = this.props
 
     return (
-      <Page>
-        {isFetching ? 'Carregando...' : <TextList texts={texts} />}
+      <Page isFetching={isFetching}>
+        <TextList texts={texts} />
       </Page>
     )
   }
