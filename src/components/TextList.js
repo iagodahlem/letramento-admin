@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import './TextList.css'
 
 const TextItem = ({ text }) => (
@@ -7,8 +8,9 @@ const TextItem = ({ text }) => (
       <h3 className='TextItem__title'>{text.title}</h3>
       <p className='TextItem__description'>{text.description}</p>
     </div>
-    <footer className='TextItem__footer'>
 
+    <footer className='TextItem__footer'>
+      <Link className='TextItem__link' to={`/textos/${text.id}`}>Ver Texto</Link>
     </footer>
   </div>
 )

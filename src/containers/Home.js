@@ -6,12 +6,12 @@ import Page from '../components/Page'
 import TextList from '../components/TextList'
 
 class Home extends Component {
-  componentDidMount() {
-    this.fetchData()
+  componentDidMount = () => {
+    this.fetch()
   }
 
-  fetchData() {
-    const { fetchTexts } = this.props
+  fetch = () => {
+    const fetchTexts = this.props.fetchTexts
     fetchTexts()
   }
 

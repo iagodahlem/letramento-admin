@@ -22,7 +22,7 @@ class Texts extends Component {
     })
   }
 
-  handleClickCreateText = () => {
+  handleClickCreate = () => {
     const createText = this.props.createText
     const text = this.state.text
 
@@ -35,8 +35,8 @@ class Texts extends Component {
     return (
       <Page>
         <TextForm
-          onChangeText={this.handleChangeText}
-          onClickCreateText={this.handleClickCreateText}
+          onChange={this.handleChangeText}
+          onClick={this.handleClickCreate}
         />
       </Page>
     )

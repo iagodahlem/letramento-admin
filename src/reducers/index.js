@@ -1,17 +1,16 @@
 import { combineReducers } from 'redux'
-import { reducer as formReducer } from 'redux-form'
-import textsReducer, * as fromTexts from './textsReducer'
-import authReducer, * as fromAuth from './authReducer'
+import texts, * as fromTexts from './textsReducer'
+import auth, * as fromAuth from './authReducer'
 
 const rootReducer = combineReducers({
-  texts: textsReducer,
-  auth: authReducer,
-  form: formReducer,
+  texts,
+  auth,
 })
 
 export default rootReducer
 
 export const getTexts = (state) => fromTexts.getTexts(state.texts)
+export const getText = (state) => fromTexts.getText(state.texts)
 export const getTextsIsFetching = (state) => fromTexts.getIsFetching(state.texts)
 export const getTextsErrorMessage = (state) => fromTexts.getErrorMessage(state.texts)
 

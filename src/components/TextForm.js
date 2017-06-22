@@ -5,21 +5,21 @@ import Input from './Input'
 import Textarea from './Textarea'
 import './TextForm.css'
 
-const TextForm = ({ onChangeText, onClickCreateText }) => (
+const TextForm = ({ text, onChange, onClick }) => (
   <div className='TextForm'>
-    <Input name='title' onChange={onChangeText} placeholder='Titulo' />
-    <Input name='description' onChange={onChangeText} placeholder='Descrição' />
-    <Textarea name='body' rows='10' onChange={onChangeText} placeholder='Texto' />
+    <Input name='title' value={text.title} onChange={onChange} placeholder='Titulo' />
+    <Input name='description' value={text.description} onChange={onChange} placeholder='Descrição' />
+    {/*<Textarea name='body' value={text.body} rows='10' onChange={onChange} placeholder='Texto' />*/}
 
-    <Button onClick={onClickCreateText}>
+    <Button onClick={onClick}>
       Salvar
     </Button>
   </div>
 )
 
 TextForm.propTypes = {
-  onChangeText: PropTypes.func.isRequired,
-  onClickCreateText: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 }
 
 export default TextForm

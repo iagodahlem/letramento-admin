@@ -1,20 +1,26 @@
 import apiService from './apiService'
 import authService from './authService'
 
-const fetch = () => apiService
+const fetchTexts = () => apiService
   .get('/texts')
   .then(response => response.data)
 
-const create = (text) => apiService
+const showText = (id) => apiService
+  .get(`/texts/${id}`)
+  .then(response => response.data)
+
+const createText = (text) => apiService
   .post('/texts', text, { headers: authService.authorization() })
   .then(response => response.data)
 
 export default {
-  fetch,
-  create,
+  fetchTexts,
+  showText,
+  createText,
 }
 
 export {
-  fetch,
-  create,
+  fetchTexts,
+  showText,
+  createText,
 }

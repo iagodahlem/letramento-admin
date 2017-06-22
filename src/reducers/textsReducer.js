@@ -13,13 +13,28 @@ const all = (state = [], action) => {
   }
 }
 
+const text = (state = {}, action) => {
+  switch (action.type) {
+    case types.TEXTS_SHOW_SUCCESS:
+      return action.payload
+    case types.TEXTS_SHOW_REQUEST:
+    case types.TEXTS_SHOW_FAILURE:
+      return {}
+    default:
+      return state
+  }
+}
+
 const isFetching = (state = false, action) => {
   switch (action.type) {
     case types.TEXTS_FETCH_REQUEST:
+    case types.TEXTS_SHOW_REQUEST:
     case types.TEXTS_CREATE_REQUEST:
       return true
     case types.TEXTS_FETCH_SUCCESS:
     case types.TEXTS_FETCH_FAILURE:
+    case types.TEXTS_SHOW_SUCCESS:
+    case types.TEXTS_SHOW_FAILURE:
     case types.TEXTS_CREATE_SUCCESS:
     case types.TEXTS_CREATE_FAILURE:
       return false
@@ -31,10 +46,13 @@ const isFetching = (state = false, action) => {
 const errorMessage = (state = null, action) => {
   switch (action.type) {
     case types.TEXTS_FETCH_FAILURE:
+    case types.TEXTS_SHOW_FAILURE:
     case types.TEXTS_CREATE_FAILURE:
       return action.message
     case types.TEXTS_FETCH_REQUEST:
     case types.TEXTS_FETCH_SUCCESS:
+    case types.TEXTS_SHOW_REQUEST:
+    case types.TEXTS_SHOW_SUCCESS:
     case types.TEXTS_CREATE_REQUEST:
     case types.TEXTS_CREATE_SUCCESS:
       return null
@@ -45,6 +63,7 @@ const errorMessage = (state = null, action) => {
 
 const textsReducer = combineReducers({
   all,
+  text,
   isFetching,
   errorMessage,
 })
@@ -52,5 +71,6 @@ const textsReducer = combineReducers({
 export default textsReducer
 
 export const getTexts = (state) => state.all
+export const getText = (state) => state.text
 export const getIsFetching = (state) => state.isFetching
 export const getErrorMessage = (state) => state.errorMessage

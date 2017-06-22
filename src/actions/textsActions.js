@@ -23,9 +23,35 @@ const fetchTexts = () => (dispatch, getState) => {
 
   dispatch(fetchTextsRequest())
 
-  return textsService.fetch()
+  return textsService.fetchTexts()
     .then(payload => dispatch(fetchTextsSuccess(payload)))
     .catch(error => dispatch(fetchTextsFailure(error)))
+}
+
+const showText = (id) => (dispatch, getState) => {
+  const showTextRequest = () => ({
+    type: types.TEXTS_SHOW_REQUEST,
+  })
+
+  const showTextSuccess = (payload) => ({
+    type: types.TEXTS_SHOW_SUCCESS,
+    payload,
+  })
+
+  const showTextFailure = (error) => ({
+    type: types.TEXTS_SHOW_FAILURE,
+    message: error.message || 'Alguma coisa deu errado.',
+  })
+
+  if (getTextsIsFetching(getState())) {
+    return Promise.resolve()
+  }
+
+  dispatch(showTextRequest())
+
+  return textsService.showText(id)
+    .then(payload => dispatch(showTextSuccess(payload)))
+    .catch(error => dispatch(showTextFailure(error)))
 }
 
 const createText = (text) => (dispatch, getState) => {
@@ -33,9 +59,8 @@ const createText = (text) => (dispatch, getState) => {
     type: types.TEXTS_CREATE_REQUEST,
   })
 
-  const createSuccess = (payload) => ({
+  const createSuccess = () => ({
     type: types.TEXTS_CREATE_SUCCESS,
-    payload,
   })
 
   const createFailure = (error) => ({
@@ -49,12 +74,13 @@ const createText = (text) => (dispatch, getState) => {
 
   dispatch(createRequest())
 
-  return textsService.create(text)
-    .then(payload => dispatch(createSuccess(payload)))
+  return textsService.createText(text)
+    .then(() => dispatch(createSuccess()))
     .catch(error => dispatch(createFailure(error)))
 }
 
 export {
   fetchTexts,
+  showText,
   createText,
 }

@@ -1,45 +1,65 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { getTexts, getTextsIsFetching, getTextsErrorMessage } from '../reducers'
+import { withRouter } from 'react-router-dom'
+import { getText, getTextsIsFetching, getTextsErrorMessage } from '../reducers'
 import * as textsActions from '../actions/textsActions'
 import Page from '../components/Page'
-import TextList from '../components/TextList'
+import TextForm from '../components/TextForm'
 
-class Texts extends Component {
-  componentDidMount() {
-    this.fetch()
+class TextsShow extends Component {
+  componentDidMount = () => {
+    this.show()
   }
 
-  fetch() {
-    const { fetchTexts } = this.props
-    fetchTexts()
+  show = () => {
+    const showText = this.props.showText
+    const id = this.props.id
+    showText(id)
+  }
+
+  handleChangeText = (e) => {
+    const text = this.props.text
+    const name = e.target.name
+    const value = e.target.value
+
+    text[name] = value
+
+    console.log(this.props.text)
   }
 
   render() {
-    const { texts, isFetching } = this.props
+    const { text, isFetching, errorMessage } = this.props
 
     return (
       <Page>
-        <h2>Jogos</h2>
-
-        <p>
-          Escolha algum dos textos para realizar a leitura, e iniciar o jogo.
-        </p>
-
-        {isFetching ? 'Carregando...' : <TextList texts={texts} />}
+        <TextForm
+          text={text}
+          onChange={this.handleChangeText}
+          onClick={(e) => console.log(e, 'salvar')}
+        />
       </Page>
     )
   }
 }
 
-const mapStateToProps = (state) => ({
-  texts: getTexts(state),
+TextsShow.propTypes = {
+  id: PropTypes.string.isRequired,
+  text: PropTypes.object,
+  isFetching: PropTypes.bool.isRequired,
+  errorMessage: PropTypes.string,
+  showText: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = (state, { match }) => ({
+  id: match.params.id,
+  text: getText(state),
   isFetching: getTextsIsFetching(state),
   errorMessage: getTextsErrorMessage(state),
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchTexts: () => dispatch(textsActions.fetchTexts()),
+  showText: (id) => dispatch(textsActions.showText(id)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Texts)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TextsShow))
