@@ -14,10 +14,20 @@ import './index.css'
 
 const store = configureStore()
 
+const RoutePublic = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+    <App>
+      <Component {...props}/>
+    </App>
+  )}/>
+)
+
 const RoutePrivate = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     hasToken() ? (
-      <Component {...props}/>
+      <App isPrivate={true}>
+        <Component {...props}/>
+      </App>
     ) : (
       <Redirect to={{
         pathname: '/login',
@@ -30,15 +40,13 @@ const RoutePrivate = ({ component: Component, ...rest }) => (
 const routes = (
   <Provider store={store}>
     <Router>
-      <App>
-        <Switch>
-          <Route exact path='/login' component={Login} />
+      <Switch>
+        <RoutePublic exact path='/login' component={Login} />
 
-          <RoutePrivate exact path='/' component={Home} />
-          <RoutePrivate exact path='/textos/novo' component={TextsNew} />
-          <RoutePrivate exact path='/textos/:id' component={TextsShow} />
-        </Switch>
-      </App>
+        <RoutePrivate exact path='/' component={Home} />
+        <RoutePrivate exact path='/textos/novo' component={TextsNew} />
+        <RoutePrivate exact path='/textos/:id' component={TextsShow} />
+      </Switch>
     </Router>
   </Provider>
 )

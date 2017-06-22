@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as authActions from '../actions/authActions'
+import Page from '../components/Page'
+import LoginForm from '../components/LoginForm'
 
 class Login extends Component {
   state = {
@@ -28,14 +30,12 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <input type="email" name="email" onChange={this.handleChangeCredentials}/>
-        <input type="password" name="password" onChange={this.handleChangeCredentials}/>
-
-        <button type="button" onClick={this.handleClickLoginForm}>
-          Entrar
-        </button>
-      </div>
+      <Page>
+        <LoginForm
+          onChangeCredentials={this.handleChangeCredentials}
+          onClickLogin={this.handleClickLogin}
+        />
+      </Page>
     )
   }
 }

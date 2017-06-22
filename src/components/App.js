@@ -3,9 +3,9 @@ import Footer from './Footer'
 import Header from './Header'
 import './App.css'
 
-const App = ({ children }) => (
+const App = ({ children, isPrivate }) => (
   <div className='App'>
-    <Header />
+    {isPrivate && <Header />}
 
     <main className='App__main'>
       {children}

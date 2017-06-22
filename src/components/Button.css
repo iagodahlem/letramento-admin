@@ -3,18 +3,19 @@
   justify-content: center;
   align-items: center;
   min-width: 120px;
-  padding: .5em 1.5em;
-  background-color: transparent;
-  border: 1px solid #fff;
+  padding: .4375em 1.5em .5em;
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
   border-radius: 50vh;
   outline: none;
-  color: #fff;
+  color: var(--white);
   font-family: inherit;
-  font-size: 1.5em;
+  font-size: 1.3em;
   font-weight: 700;
   cursor: pointer;
+  transition: opacity .1s ease;
 }
 
-.Button--link {
-  text-decoration: none;
+.Button:hover {
+  opacity: .9;
 }
