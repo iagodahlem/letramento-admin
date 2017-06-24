@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // const BASE_URL = 'http://localhost:3001/api'
-const BASE_URL = 'https://letramento-api.herokuapp.com'
+const BASE_URL = 'https://letramento-api.herokuapp.com/api'
 
 const get = (url, config) => axios
   .get(`${BASE_URL}${url}`, config)
