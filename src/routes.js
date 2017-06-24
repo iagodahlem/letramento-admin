@@ -1,6 +1,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import { Router, Switch, Route, Redirect } from 'react-router-dom'
+import history from './history'
 import configureStore from './store/configureStore'
 import App from './components/App'
 import Home from './containers/Home'
@@ -36,7 +37,7 @@ const RoutePrivate = ({ component: Component, ...rest }) => (
 
 const routes = (
   <Provider store={store}>
-    <Router>
+    <Router history={history}>
       <Switch>
         <RoutePublic exact path='/login' component={Login} />
         <RoutePrivate exact path='/' component={Home} />

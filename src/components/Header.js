@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import './Header.css'
 
-const Header = () => (
+const Header = ({ onClickLogout }) => (
   <header className='Header'>
     <div className='Header__left'>
       <h1 className='Header__title'>
@@ -26,7 +26,9 @@ const Header = () => (
     </div>
 
     <div className='Header__right'>
-      <p className='Header__navLink'>Logout</p>
+      <p className='Header__navLink' onClick={onClickLogout}>
+        Logout
+      </p>
     </div>
   </header>
 )

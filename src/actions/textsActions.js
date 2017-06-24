@@ -1,6 +1,7 @@
 import * as types from '../constants/actionTypes'
 import * as textsService from '../services/textsService'
 import { getTextsIsFetching } from '../reducers'
+import history from '../history'
 
 const fetchTexts = () => (dispatch, getState) => {
   const fetchTextsRequest = () => ({
@@ -77,6 +78,7 @@ const createText = (text) => (dispatch, getState) => {
 
   return textsService.createText(text)
     .then(payload => dispatch(createSuccess(payload)))
+    .then(() => history.push('/'))
     .catch(error => dispatch(createFailure(error)))
 }
 
@@ -103,6 +105,7 @@ const updateText = (id, text) => (dispatch, getState) => {
 
   return textsService.updateText(id, text)
     .then(payload => dispatch(updateSuccess(payload)))
+    .then(() => history.push('/'))
     .catch(error => dispatch(updateFailure(error)))
 }
 

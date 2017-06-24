@@ -2,7 +2,7 @@ import apiService from './apiService'
 import authService from './authService'
 
 const fetchTexts = () => apiService
-  .get('/texts')
+  .get('/users/texts', { headers: authService.authorization() })
   .then(response => response.data)
 
 const showText = (id) => apiService

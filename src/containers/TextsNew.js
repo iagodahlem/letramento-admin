@@ -31,7 +31,6 @@ class Texts extends Component {
 
   render() {
     const { isFetching, errorMessage } = this.props
-    const { text } = this.state
 
     return (
       <Page title='Novo Texto'>

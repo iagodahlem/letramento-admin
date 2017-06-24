@@ -17,7 +17,10 @@ const TextItem = ({ text }) => (
 
 const TextList = ({ texts }) => (
   <div className='TextList'>
-    {texts.map(text => <TextItem key={text.id} text={text} />)}
+    {texts.length
+      ? texts.map(text => <TextItem key={text.id} text={text} />)
+      : 'Nenhum texto.'
+    }
   </div>
 )
 
